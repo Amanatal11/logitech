@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Outlet, Navigate, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import Sidebar from './Sidebar';
+import ThemeToggle from './ThemeToggle';
 import useAuthStore from '../store/useAuthStore';
 
 const Layout = () => {
@@ -33,14 +34,17 @@ const Layout = () => {
             {/* Mobile Header & Overlay */}
             <div className="md:hidden fixed inset-0 z-50 pointer-events-none">
                 {/* Mobile Header */}
-                <div className="pointer-events-auto bg-white border-b border-gray-200 p-4 flex items-center justify-between">
+                <div className="pointer-events-auto bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 p-4 flex items-center justify-between">
                     <h1 className="text-xl font-bold text-primary-600">LogiTrack</h1>
-                    <button
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg"
-                    >
-                        {isMobileMenuOpen ? <X /> : <Menu />}
-                    </button>
+                    <div className="flex items-center gap-2">
+                        <ThemeToggle />
+                        <button
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                            className="p-2 text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 rounded-lg"
+                        >
+                            {isMobileMenuOpen ? <X /> : <Menu />}
+                        </button>
+                    </div>
                 </div>
 
                 {/* Mobile Menu Overlay */}

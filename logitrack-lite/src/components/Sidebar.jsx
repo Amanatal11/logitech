@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { LayoutDashboard, Package, Truck, User, LogOut, Map } from 'lucide-react';
 import useAuthStore from '../store/useAuthStore';
 import { cn } from '../utils/cn';
+import ThemeToggle from './ThemeToggle';
 
 const Sidebar = () => {
     const { user, logout } = useAuthStore();
@@ -20,7 +21,7 @@ const Sidebar = () => {
     );
 
     return (
-        <div className="h-screen w-64 bg-white border-r border-gray-200 flex flex-col hidden md:flex">
+        <div className="h-screen w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col hidden md:flex">
             <div className="p-6 border-b border-gray-200">
                 <h1 className="text-2xl font-bold text-primary-600 flex items-center gap-2">
                     <Truck className="w-8 h-8" />
@@ -37,8 +38,8 @@ const Sidebar = () => {
                             cn(
                                 "flex items-center gap-3 px-4 py-3 rounded-lg transition-colors",
                                 isActive
-                                    ? "bg-primary-50 text-primary-700 font-medium"
-                                    : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                                    ? "bg-primary-50 text-primary-700 font-medium dark:bg-primary-900/20 dark:text-primary-400"
+                                    : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-200"
                             )
                         }
                     >
@@ -48,13 +49,16 @@ const Sidebar = () => {
                 ))}
             </nav>
 
-            <div className="p-4 border-t border-gray-200">
+            <div className="p-4 border-t border-gray-200 dark:border-gray-700">
+                <div className="flex justify-end px-4 mb-2">
+                    <ThemeToggle />
+                </div>
                 <div className="flex items-center gap-3 px-4 py-3 mb-2">
                     <div className="w-8 h-8 rounded-full bg-primary-100 flex items-center justify-center text-primary-700 font-bold">
                         {user?.name?.charAt(0) || 'U'}
                     </div>
                     <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-gray-900 truncate">{user?.name}</p>
+                        <p className="text-sm font-medium text-gray-900 dark:text-gray-100 truncate">{user?.name}</p>
                         <p className="text-xs text-gray-500 truncate capitalize">{user?.role}</p>
                     </div>
                 </div>
