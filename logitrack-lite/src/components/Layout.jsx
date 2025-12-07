@@ -3,6 +3,7 @@ import { Outlet, Navigate, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import Sidebar from './Sidebar';
 import ThemeToggle from './ThemeToggle';
+import Footer from './Footer';
 import useAuthStore from '../store/useAuthStore';
 
 const Layout = () => {
@@ -58,10 +59,11 @@ const Layout = () => {
             </div>
 
             {/* Main Content */}
-            <main className="flex-1 overflow-auto w-full pt-[65px] md:pt-0">
-                <div className="p-4 md:p-8 max-w-7xl mx-auto">
+            <main className="flex-1 overflow-auto w-full pt-[65px] md:pt-0 flex flex-col">
+                <div className="p-4 md:p-8 max-w-7xl mx-auto flex-1 w-full">
                     <Outlet />
                 </div>
+                <Footer />
             </main>
         </div>
     );
