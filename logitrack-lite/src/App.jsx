@@ -10,6 +10,9 @@ import ShipmentDetails from './pages/ShipmentDetails';
 import DriverDashboard from './pages/DriverDashboard';
 import Tracking from './pages/Tracking';
 import Profile from './pages/Profile';
+import Tracking from './pages/Tracking';
+import Profile from './pages/Profile';
+import NotFound from './pages/NotFound';
 import useAuthStore from './store/useAuthStore';
 import { ToastProvider } from './context/ToastContext';
 
@@ -92,8 +95,8 @@ function App() {
             />
           </Route>
 
-          {/* Catch all - redirect based on auth status */}
-          <Route path="*" element={<Navigate to="/" replace />} />
+          {/* Catch all */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </ToastProvider>
