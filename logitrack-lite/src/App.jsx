@@ -10,11 +10,12 @@ import ShipmentDetails from './pages/ShipmentDetails';
 import DriverDashboard from './pages/DriverDashboard';
 import Tracking from './pages/Tracking';
 import Profile from './pages/Profile';
-import Tracking from './pages/Tracking';
-import Profile from './pages/Profile';
 import NotFound from './pages/NotFound';
+import NotificationDemo from './pages/NotificationDemo';
 import useAuthStore from './store/useAuthStore';
 import { ToastProvider } from './context/ToastContext';
+
+
 
 // Protected Route Wrapper
 const ProtectedRoute = ({ children, allowedRoles }) => {
@@ -90,6 +91,14 @@ function App() {
               element={
                 <ProtectedRoute allowedRoles={['admin', 'driver']}>
                   <Profile />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/notifications-demo"
+              element={
+                <ProtectedRoute allowedRoles={['admin']}>
+                  <NotificationDemo />
                 </ProtectedRoute>
               }
             />
