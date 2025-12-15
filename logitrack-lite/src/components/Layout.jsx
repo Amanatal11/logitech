@@ -11,6 +11,8 @@ const Layout = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const location = useLocation();
 
+    const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+
     // Redirect to login if not authenticated, except for public pages
     const publicRoutes = ['/', '/track'];
     // Check if current path starts with /track (for /track/:id)
@@ -30,7 +32,7 @@ const Layout = () => {
     return (
         <div className="flex h-screen bg-gray-50">
             {/* Desktop Sidebar */}
-            <Sidebar />
+            <Sidebar isCollapsed={isSidebarCollapsed} toggleSidebar={() => setIsSidebarCollapsed(!isSidebarCollapsed)} />
 
             {/* Mobile Header & Overlay */}
             <div className="md:hidden fixed inset-0 z-50 pointer-events-none">
